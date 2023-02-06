@@ -183,7 +183,7 @@ pub mod filter {
 /// 处理水印
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Watermakr {
+pub struct Watermark {
     #[prost(uint32, tag = "1")]
     pub x: u32,
     #[prost(uint32, tag = "2")]
@@ -213,6 +213,6 @@ pub mod spec {
         #[prost(message, tag = "6")]
         Filter(super::Filter),
         #[prost(message, tag = "7")]
-        Watermakr(super::Watermakr),
+        Watermark(super::Watermark),
     }
 }

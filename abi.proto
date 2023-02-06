@@ -58,7 +58,7 @@ message Filter {
 }
 
 // 处理水印
-message Watermakr {
+message Watermark {
     uint32 x = 1;
     uint32 y = 2;
 }
@@ -72,6 +72,6 @@ message Spec {
         Flipv flipv = 4;
         Contrast contrast = 5;
         Filter filter = 6;
-        Watermakr watermakr = 7;
+        Watermark watermark = 7;
     }
 }
