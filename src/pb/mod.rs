@@ -2,10 +2,8 @@ use base64::{decode_config, encode_config, URL_SAFE_NO_PAD};
 use photon_rs::transform::SamplingFilter;
 use prost::Message;
 
-
 mod abi;
 pub use abi::*;
-
 
 impl ImageSpec {
     pub fn new(specs: Vec<Spec>) -> Self {
@@ -33,14 +31,14 @@ impl TryFrom<&str> for ImageSpec {
 
 // 辅助函数，photon_rs 相应的方法里需要字符串
 impl filter::Filter {
-   pub fn to_str(&self) -> Option<&'static str> {
+    pub fn to_str(self) -> Option<&'static str> {
         match self {
             filter::Filter::Unspecified => None,
             filter::Filter::Oceanic => Some("oceanic"),
             filter::Filter::Islands => Some("islands"),
             filter::Filter::Marine => Some("marine"),
         }
-   }
+    }
 }
 
 // 在我们定义的 SampleFilter 和 photon_rs 的 SamplingFilter 间转换
@@ -89,16 +87,12 @@ impl Spec {
         }
     }
 
-    pub fn new_watermark(x: u32, y: u32) -> Self{
+    pub fn new_watermark(x: u32, y: u32) -> Self {
         Self {
-            data: Some(spec::Data::Watermark(Watermark {
-                x,
-                y,
-            })),
+            data: Some(spec::Data::Watermark(Watermark { x, y })),
         }
     }
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -115,6 +109,3 @@ mod tests {
         assert_eq!(image_spec, s.as_str().try_into().unwrap());
     }
 }
-
-
-
